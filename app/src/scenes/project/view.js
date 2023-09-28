@@ -35,7 +35,6 @@ export default function ProjectView() {
   }, [copied]);
 
   if (!project) return <Loader />;
-
   return (
     <React.Fragment>
       <div className="pl-20 pt-24 pb-4 w-[98%]">
@@ -46,7 +45,7 @@ export default function ProjectView() {
             </div>
             <div className="flex items-center gap-2">
               <button
-                onClick={() => history.push(`/project/edit/${project?._id}`)}
+                onClick={() => history.push(`/project/edit/${project[0]?._id}`)}
                 className="border !border-[#0560FD] text-[#0560FD] py-[7px] px-[20px] bg-[#FFFFFF] rounded-[16px]">
                 Edit
               </button>
@@ -60,7 +59,6 @@ export default function ProjectView() {
 }
 
 const ProjectDetails = ({ project }) => {
-  console.log(project);
   return (
     <div>
       <div className="flex flex-wrap p-3">
