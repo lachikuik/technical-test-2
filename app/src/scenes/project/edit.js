@@ -17,6 +17,7 @@ export default function EditProject() {
   useEffect(() => {
     (async () => {
       const { data: u } = await api.get(`/project/${id}`);
+      console.log('project', u);
       setProject(u);
     })();
   }, []);
@@ -46,11 +47,13 @@ export default function EditProject() {
           </div>
           <Formik
             initialValues={project}
+     
             onSubmit={async (values) => {
               try {
-                await api.put(`/project/${project._id}`, values);
-                toast.success(`${project.name} updated!`);
-                history.push(`/project/${project._id}`);
+                console.log(values);
+                await api.put(`/project/${id}`, values);
+                toast.success(`${values.name} updated!`);
+                history.push(`/project/${id}`);
               } catch (e) {
                 console.log(e);
                 toast.error("Some Error!");
@@ -59,7 +62,7 @@ export default function EditProject() {
             {({ values, handleChange, handleSubmit, isSubmitting }) => (
               <React.Fragment>
                 <div className="flex gap-4 pl-4 pt-4">
-                  {project.logo && <img className="w-[85px] h-[85px] border border-[#E5EAEF] rounded-[8px]" src={project.logo} alt="ProjectImage.png" />}
+                  {values.logo && <img className="w-[85px] h-[85px] border border-[#E5EAEF] rounded-[8px]" src={values.logo} alt="ProjectImage.png" />}
                 </div>
 
                 <div className="py-3 px-4">
