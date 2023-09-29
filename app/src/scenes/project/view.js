@@ -12,6 +12,7 @@ import api from "../../services/api";
 
 import ProgressBar from "../../components/ProgressBar";
 import SelectMonth from "./../../components/selectMonth";
+import BudgetByMonth from "../../components/budgetByMonth";
 
 ChartJS.register(...registerables);
 
@@ -83,8 +84,11 @@ const ProjectDetails = ({ project }) => {
                 </div>
                 <div className="mt-2 mr-2">
                   <span className="text-[18px] font-semibold text-[#000000]">Budget consummed {project.paymentCycle === "MONTHLY" && "this month"}:</span>
-
                   <Budget project={project} />
+                </div>
+                <div className="mt-2 mr-2">
+                  <span className="text-[18px] font-semibold text-[#000000]">Budget by Month</span>
+                  <BudgetByMonth project={project} />
                 </div>
               </div>
             </div>
