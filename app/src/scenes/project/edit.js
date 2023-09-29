@@ -17,7 +17,6 @@ export default function EditProject() {
   useEffect(() => {
     (async () => {
       const { data: u } = await api.get(`/project/${id}`);
-      console.log('project', u);
       setProject(u);
     })();
   }, []);
@@ -50,7 +49,6 @@ export default function EditProject() {
      
             onSubmit={async (values) => {
               try {
-                console.log(values);
                 await api.put(`/project/${id}`, values);
                 toast.success(`${values.name} updated!`);
                 history.push(`/project/${id}`);
